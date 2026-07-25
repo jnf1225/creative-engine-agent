@@ -1,0 +1,14 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "//": "Settings for the WORKER service (a SECOND Railway service in the same project, same repo). In the Railway dashboard create a new service from the same repo and set its Start Command to the one below; or use a service-scoped railway.toml. No build step needed — worker/index.mjs is plain ESM.",
+  "build": {
+    "builder": "NIXPACKS",
+    "buildCommand": "npm ci"
+  },
+  "deploy": {
+    "startCommand": "node worker/index.mjs",
+    "restartPolicyType": "ALWAYS",
+    "numReplicas": 1,
+    "//numReplicas": "MUST stay 1 — two workers would double every ingest/precompute trigger."
+  }
+}
