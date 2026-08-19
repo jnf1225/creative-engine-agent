@@ -49,7 +49,14 @@ replace its rows with your own.
 From inside this folder:
 
 ```
-python generate.py
+python3 generate.py
+```
+
+That reads `prompts.csv`. To use a file with a different name, put the
+name after the command:
+
+```
+python3 generate.py batch.csv
 ```
 
 Each row is generated at **1080x1080, 1080x1350, and 1080x1920** and
@@ -73,7 +80,7 @@ The batch keeps going. At the end you get:
 Retry only the failures with:
 
 ```
-python generate.py --csv failures.csv
+python3 generate.py failures.csv
 ```
 
 Already-finished images are **skipped automatically**, so re-running
@@ -84,11 +91,10 @@ never wastes money regenerating what you already have. Use
 
 | Command | What it does |
 |---|---|
-| `python generate.py --dry-run` | Checks your CSV and lists the files it *would* create — costs nothing |
-| `python generate.py --csv other.csv` | Use a different CSV file |
-| `python generate.py --quality low` | Faster and cheaper drafts (`medium` is the default, `high` is slow and pricier) |
-| `python generate.py --workers 8` | More images at once (lower this if you hit rate limits) |
-| `python generate.py --overwrite` | Regenerate images that already exist |
+| `python3 generate.py --dry-run` | Checks your CSV and lists the files it *would* create — costs nothing |
+| `python3 generate.py --quality low` | Faster and cheaper drafts (`medium` is the default, `high` is slow and pricier) |
+| `python3 generate.py --workers 8` | More images at once (lower this if you hit rate limits) |
+| `python3 generate.py --overwrite` | Regenerate images that already exist |
 
 ## A note on sizes
 

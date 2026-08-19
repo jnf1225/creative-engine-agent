@@ -378,6 +378,12 @@ def parse_args() -> argparse.Namespace:
         description="Generate images from a CSV of prompts using OpenAI's Images API.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
+    parser.add_argument(
+        "csv_file",
+        nargs="?",
+        default=None,
+        help="CSV file to read, e.g. python generate.py batch.csv",
+    )
     parser.add_argument("--csv", default="prompts.csv", help="CSV file to read (default: prompts.csv)")
     parser.add_argument("--output", default="output", help="folder to save images into (default: output)")
     parser.add_argument("--workers", type=int, default=5, help="how many images to make at once (default: 5)")
@@ -402,7 +408,7 @@ def resolve(path_text: str) -> Path:
 def main() -> int:
     args = parse_args()
 
-    csv_path = resolve(args.csv)
+    csv_path = resolve(args.csv_file or args.csv)
     output_root = resolve(args.output)
 
     rows = read_rows(csv_path)
