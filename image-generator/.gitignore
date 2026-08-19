@@ -1,0 +1,12 @@
+# Your secret API key - never commit this
+.env
+
+# Generated images and logs
+output/
+failures.log
+failures.csv
+
+# Python bits
+venv/
+__pycache__/
+*.pyc
